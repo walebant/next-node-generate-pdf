@@ -3,11 +3,13 @@ import puppeteer from 'puppeteer';
 import handlers from 'handlebars';
 
 export default async (req, res) => {
+  const customerName = req.body.name;
+
   try {
     const file = fs.readFileSync('./invoice-template.html', 'utf8');
 
     const template = handlers.compile(`${file}`);
-    const html = template(req.body.name);
+    const html = template({ customerName });
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

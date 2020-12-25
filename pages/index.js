@@ -25,7 +25,6 @@ export default function Home() {
       link.download = 'somedoc.pdf';
       link.click();
       setIsLoading(false);
-      alert('Invoice downloaded');
     };
 
     saveAsPDF();
