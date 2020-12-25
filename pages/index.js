@@ -6,14 +6,15 @@ export default function Home() {
   const [name, setName] = useState('');
 
   // container function to generate the Invoice
-  const generateInvoice = () => {
+  const generateInvoice = e => {
+    e.preventDefault();
     // send a post request with the name to our API endpoint
     const fetchData = async () => {
       const data = await fetch('http://localhost:3000/api/generate-invoice', {
         method: 'POST',
         body: JSON.stringify({ name }),
       });
-      // convert the response in an array Buffer
+      // convert the response into an array Buffer
       return data.arrayBuffer();
     };
 
@@ -55,7 +56,7 @@ export default function Home() {
             />
           </div>
 
-          <button onClick={() => generateInvoice()} className={styles.button}>
+          <button onClick={generateInvoice} className={styles.button}>
             Download Invoice
           </button>
         </form>
