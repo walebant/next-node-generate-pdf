@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice</title>
+  <style>
+    body {
+      margin-top: 5rem;
+    }
+
+    .invoice-box {
+      width: 600px;
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+      font-size: 16px;
+      line-height: 24px;
+      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+      color: #555;
+    }
+
+    .invoice-box table {
+      width: 100%;
+      line-height: inherit;
+      text-align: left;
+    }
+
+    .invoice-box table td {
+      padding: 5px;
+      vertical-align: top;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+      text-align: right;
+    }
+
+    .invoice-box table tr.top table td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.top table td.title {
+      font-size: 45px;
+      line-height: 45px;
+      color: #333;
+    }
+
+    .invoice-box table tr.information table td {
+      padding-bottom: 40px;
+    }
+
+    .invoice-box table tr.heading td {
+      background: #eee;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+
+    .invoice-box table tr.details td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.item td {
+      border-bottom: 1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+      border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+      border-top: 2px solid #eee;
+      font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .invoice-box table tr.top table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
+      .invoice-box table tr.information table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    /** RTL **/
+    .rtl {
+      direction: rtl;
+      font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+      text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="top">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td class="title">
+                <svg width="100" max-width="300" height="86" viewBox="0 0 86 86" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M71.5413 30.5336C71.6237 29.9101 71.6667 29.2866 71.6667 28.6667C71.6667 20.1419 63.9876 13.3014 55.4664 14.4588C52.9832 10.0405 48.2532 7.16669 43 7.16669C37.7468 7.16669 33.0168 10.0405 30.5336 14.4588C21.9945 13.3014 14.3333 20.1419 14.3333 28.6667C14.3333 29.2866 14.3763 29.9101 14.4588 30.5336C10.0405 33.0204 7.16667 37.7504 7.16667 43C7.16667 48.2496 10.0405 52.9796 14.4588 55.4664C14.3761 56.0853 14.3342 56.709 14.3333 57.3334C14.3333 65.8581 21.9945 72.6808 30.5336 71.5413C33.0168 75.9595 37.7468 78.8334 43 78.8334C48.2532 78.8334 52.9832 75.9595 55.4664 71.5413C63.9876 72.6808 71.6667 65.8581 71.6667 57.3334C71.6667 56.7134 71.6237 56.0899 71.5413 55.4664C75.9595 52.9796 78.8333 48.2496 78.8333 43C78.8333 37.7504 75.9595 33.0204 71.5413 30.5336ZM39.2554 58.824L26.1153 45.5155L31.218 40.4845L39.3056 48.676L54.8107 33.2892L59.856 38.3775L39.2554 58.824Z"
+                    fill="#58CAEA" />
+                </svg>
+              </td>
+
+              <td>
+                Invoice #: 123<br>
+                Created: January 1, 2020<br>
+                Due: February 1, 2020
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="information">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td>
+                Rona, Inc.<br>
+                Earth<br>
+                Universe, 3rd Dimension
+              </td>
+
+              <td>
+                JackBoys Inc.<br>
+                {{name}}<br>
+                {{name}}@example.com
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td>
+          Payment Method
+        </td>
+
+        <td>
+          Check #
+        </td>
+      </tr>
+
+      <tr class="details">
+        <td>
+          Check
+        </td>
+
+        <td>
+          1000
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td>
+          Item
+        </td>
+
+        <td>
+          Price
+        </td>
+      </tr>
+
+      <tr class="item">
+        <td>
+          Real Estate
+        </td>
+
+        <td>
+          $33,000.00
+        </td>
+      </tr>
+
+      <tr class="item">
+        <td>
+          Lamborghini
+        </td>
+
+        <td>
+          $250,000.00
+        </td>
+      </tr>
+
+      <tr class="item last">
+        <td>
+          Another stuff
+        </td>
+
+        <td>
+          $10.00
+        </td>
+      </tr>
+
+      <tr class="total">
+        <td></td>
+
+        <td>
+          Total: $283,010.00
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
