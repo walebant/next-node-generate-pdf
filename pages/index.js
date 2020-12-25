@@ -12,7 +12,7 @@ export default function Home() {
     const fetchData = async () => {
       const data = await fetch('http://localhost:3000/api/generate-invoice', {
         method: 'POST',
-        body: JSON.stringify(name),
+        body: JSON.stringify({ name }),
       });
       return data.arrayBuffer();
     };

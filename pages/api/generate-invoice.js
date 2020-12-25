@@ -3,7 +3,8 @@ import puppeteer from 'puppeteer';
 import handlers from 'handlebars';
 
 export default async (req, res) => {
-  const customerName = req.body.name || 'John Doe';
+  const { name } = JSON.parse(req.body);
+  const customerName = name || 'John Doe';
 
   try {
     const file = fs.readFileSync('./invoice-template.html', 'utf8');
