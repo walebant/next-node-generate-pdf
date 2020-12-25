@@ -1,10 +1,10 @@
 import fs from 'fs';
 import puppeteer from 'puppeteer';
-import handlers from 'handlers';
+import handlers from 'handlebars';
 
-export default async (_req, res) => {
+export default async (req, res) => {
   try {
-    const file = fs.readFileSync('./invoice.html', 'utf8');
+    const file = fs.readFileSync('./invoice-template.html', 'utf8');
 
     const template = handlers.compile(`${file}`);
     const html = template(req.body.name);
@@ -19,6 +19,7 @@ export default async (_req, res) => {
     res.statusCode = 200;
     res.send(pdf);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: err.message });
   }
 };
