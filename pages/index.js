@@ -3,32 +3,7 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  const [name, setName] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const generateInvoice = () => {
-    setIsLoading(true);
-
-    const fetchData = async () => {
-      const data = await fetch('http://localhost:3000/api/generate-invoice', {
-        method: 'POST',
-        body: JSON.stringify({ name }),
-      });
-      return data.arrayBuffer();
-    };
-
-    const saveAsPDF = async () => {
-      const buffer = await fetchData();
-      const blob = new Blob([buffer]);
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'invoice.pdf';
-      link.click();
-      setIsLoading(false);
-    };
-
-    saveAsPDF();
-  };
+  const [name, setName] = useState('Customer');
 
   return (
     <div className={styles.container}>
@@ -38,7 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Hello {name || 'Customer'} 👋</h1>
+        <h1 className={styles.title}>Hello {name} 👋</h1>
 
         <p className={styles.description}>
           Fill the form below to generate your invoice
@@ -55,14 +30,10 @@ export default function Home() {
             />
           </div>
 
-          <button
-            onClick={() => generateInvoice()}
-            disabled={isLoading}
-            className={styles.button}>
+          <button onClick={() => generateInvoice()} className={styles.button}>
             Download Invoice
           </button>
         </form>
-        {isLoading && <p>Generating Invoice... 🤞🏽</p>}
       </main>
     </div>
   );
