@@ -12,13 +12,13 @@ export default function Home() {
     const fetchData = async () => {
       const data = await fetch('http://localhost:3000/api/generate-invoice', {
         method: 'POST',
-        body: name,
+        body: JSON.stringify(name),
       });
       return data.arrayBuffer();
     };
 
     const saveAsPDF = async () => {
-      const buffer = fetchData();
+      const buffer = await fetchData();
       const blob = new Blob([buffer]);
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
@@ -47,7 +47,7 @@ export default function Home() {
 
         <form className={styles.form}>
           <div className={styles.field}>
-            <label for='name'>Enter Name</label>
+            <label htmlFor='name'>Enter Name</label>
             <input
               id='name'
               type='text'
