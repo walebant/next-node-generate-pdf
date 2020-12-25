@@ -30,9 +30,7 @@ export default function Home() {
             />
           </div>
 
-          <button onClick={() => generateInvoice()} className={styles.button}>
-            Download Invoice
-          </button>
+          <button className={styles.button}>Download Invoice</button>
         </form>
       </main>
     </div>
