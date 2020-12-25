@@ -6,7 +6,7 @@ export default function Home() {
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const generateInvoice = async () => {
+  const generateInvoice = () => {
     setIsLoading(true);
 
     const fetchData = async () => {
@@ -22,7 +22,7 @@ export default function Home() {
       const blob = new Blob([buffer]);
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
-      link.download = 'somedoc.pdf';
+      link.download = 'invoice.pdf';
       link.click();
       setIsLoading(false);
     };
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Generate Customer Invoice</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
