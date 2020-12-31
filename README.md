@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repo is created as a guide for this article: [Generating a customer invoice pdf with NextJS](https://walebant.hashnode.dev/generating-a-customer-invoice-pdf-with-nextjs)
 
 ## Getting Started
 
